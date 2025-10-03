@@ -27,6 +27,20 @@
       <label class="form-label">날짜</label>
       <input type="date" class="form-control" id="date" required>
     </div>
+    <div class="mb-3">
+      <label class="form-label">카테고리</label>
+      <select id="category" class="form-control" required>
+        <option value="">-- 선택 --</option>
+        <option>명사</option>
+        <option>동사</option>
+        <option>형용사</option>
+        <option>기타</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">난이도 (1~5)</label>
+      <input type="number" class="form-control" id="level" min="1" max="5" required>
+    </div>
     <button type="submit" class="btn btn-success">확인</button>
     <a href="index.html" class="btn btn-secondary">취소</a>
   </form>
@@ -37,14 +51,18 @@
       const meaning = document.getElementById("meaning").value.trim();
       const author = document.getElementById("author").value.trim();
       const date = document.getElementById("date").value;
+      const category = document.getElementById("category").value;
+      const level = parseInt(document.getElementById("level").value);
 
       if(word.length < 2) { alert("단어는 2글자 이상!"); return false; }
       if(meaning.length < 2) { alert("뜻은 2글자 이상!"); return false; }
       if(author === "") { alert("작성자 입력!"); return false; }
       if(date === "") { alert("날짜 입력!"); return false; }
+      if(category === "") { alert("카테고리 선택!"); return false; }
+      if(isNaN(level) || level < 1 || level > 5) { alert("난이도는 1~5 숫자!"); return false; }
 
       const words = JSON.parse(localStorage.getItem("words")) || [];
-      words.push({word, meaning, author, date});
+      words.push({word, meaning, author, date, category, level});
       localStorage.setItem("words", JSON.stringify(words));
 
       alert("게시물이 추가됩니다");

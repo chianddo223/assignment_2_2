@@ -19,6 +19,8 @@
         <th>뜻</th>
         <th>작성자</th>
         <th>날짜</th>
+        <th>카테고리</th>
+        <th>난이도</th>
       </tr>
     </thead>
     <tbody id="word-list"></tbody>
@@ -27,32 +29,29 @@
   <a href="add.html" class="btn btn-success">추가</a>
 
   <script>
-    // 기본 데이터 (최초 실행 시만 세팅)
+    // 기본 데이터
     const defaultWords = [
-      {word: "persistent", meaning:"끈질긴", author:"홍길동", date:"2025-10-01"},
-      {word: "accuse", meaning:"비난하다", author:"김철수", date:"2025-10-02"},
-      {word: "probationary", meaning:"수습의", author:"이영희", date:"2025-09-30"},
-      {word: "legitimate", meaning:"합법적인", author:"박민수", date:"2025-09-29"},
-      {word: "superintendent", meaning:"감독자", author:"최수지", date:"2025-09-28"},
-      {word: "indicate", meaning:"나타내다", author:"윤하늘", date:"2025-09-27"},
-      {word: "electric", meaning:"전기의", author:"정우성", date:"2025-09-25"},
-      {word: "maintain", meaning:"유지하다", author:"한지민", date:"2025-09-24"},
-      {word: "confirm", meaning:"확인하다", author:"서지훈", date:"2025-09-23"},
-      {word: "observe", meaning:"관찰하다", author:"강유진", date:"2025-09-22"}
+      {word: "persistent", meaning:"끈질긴", author:"홍길동", date:"2025-10-01", category:"형용사", level:3},
+      {word: "accuse", meaning:"비난하다", author:"김철수", date:"2025-10-02", category:"동사", level:4},
+      {word: "probationary", meaning:"수습의", author:"이영희", date:"2025-09-30", category:"형용사", level:2},
+      {word: "legitimate", meaning:"합법적인", author:"박민수", date:"2025-09-29", category:"형용사", level:3},
+      {word: "superintendent", meaning:"감독자", author:"최수지", date:"2025-09-28", category:"명사", level:5},
+      {word: "indicate", meaning:"나타내다", author:"윤하늘", date:"2025-09-27", category:"동사", level:2},
+      {word: "electric", meaning:"전기의", author:"정우성", date:"2025-09-25", category:"형용사", level:3},
+      {word: "maintain", meaning:"유지하다", author:"한지민", date:"2025-09-24", category:"동사", level:4},
+      {word: "confirm", meaning:"확인하다", author:"서지훈", date:"2025-09-23", category:"동사", level:2},
+      {word: "observe", meaning:"관찰하다", author:"강유진", date:"2025-09-22", category:"동사", level:3}
     ];
 
-    // LocalStorage에서 불러오기
     function loadWords() {
       let words = JSON.parse(localStorage.getItem("words"));
       if(!words || words.length === 0) {
-        // 처음 실행이면 기본 데이터 저장
         localStorage.setItem("words", JSON.stringify(defaultWords));
         words = defaultWords;
       }
       return words;
     }
 
-    // 테이블 그리기
     function renderList() {
       const words = loadWords();
       const tbody = document.getElementById("word-list");
@@ -65,6 +64,8 @@
             <td>${w.meaning}</td>
             <td>${w.author}</td>
             <td>${w.date}</td>
+            <td>${w.category}</td>
+            <td>${w.level}</td>
           </tr>`;
       });
     }
