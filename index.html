@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>목록 페이지</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="my.css">
+</head>
+<body class="container py-4">
+
+  <h1 class="mb-4">📚 단어장</h1>
+
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>단어</th>
+        <th>뜻</th>
+        <th>작성자</th>
+        <th>날짜</th>
+      </tr>
+    </thead>
+    <tbody id="word-list"></tbody>
+  </table>
+
+  <a href="add.html" class="btn btn-success">추가</a>
+
+  <script>
+    // 기본 데이터 (최초 실행 시만 세팅)
+    const defaultWords = [
+      {word: "persistent", meaning:"끈질긴", author:"홍길동", date:"2025-10-01"},
+      {word: "accuse", meaning:"비난하다", author:"김철수", date:"2025-10-02"},
+      {word: "probationary", meaning:"수습의", author:"이영희", date:"2025-09-30"},
+      {word: "legitimate", meaning:"합법적인", author:"박민수", date:"2025-09-29"},
+      {word: "superintendent", meaning:"감독자", author:"최수지", date:"2025-09-28"},
+      {word: "indicate", meaning:"나타내다", author:"윤하늘", date:"2025-09-27"},
+      {word: "electric", meaning:"전기의", author:"정우성", date:"2025-09-25"},
+      {word: "maintain", meaning:"유지하다", author:"한지민", date:"2025-09-24"},
+      {word: "confirm", meaning:"확인하다", author:"서지훈", date:"2025-09-23"},
+      {word: "observe", meaning:"관찰하다", author:"강유진", date:"2025-09-22"}
+    ];
+
+    // LocalStorage에서 불러오기
+    function loadWords() {
+      let words = JSON.parse(localStorage.getItem("words"));
+      if(!words || words.length === 0) {
+        // 처음 실행이면 기본 데이터 저장
+        localStorage.setItem("words", JSON.stringify(defaultWords));
+        words = defaultWords;
+      }
+      return words;
+    }
+
+    // 테이블 그리기
+    function renderList() {
+      const words = loadWords();
+      const tbody = document.getElementById("word-list");
+      tbody.innerHTML = "";
+      words.forEach((w, i) => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${i + 1}</td>
+            <td><a href="view.html?index=${i}">${w.word}</a></td>
+            <td>${w.meaning}</td>
+            <td>${w.author}</td>
+            <td>${w.date}</td>
+          </tr>`;
+      });
+    }
+
+    renderList();
+  </script>
+</body>
+</html>

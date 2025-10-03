@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>추가 페이지</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="my.css">
+</head>
+<body class="container py-4">
+
+  <h2>단어 추가</h2>
+  <form onsubmit="return addWord()">
+    <div class="mb-3">
+      <label class="form-label">단어</label>
+      <input type="text" class="form-control" id="word" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">뜻</label>
+      <input type="text" class="form-control" id="meaning" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">작성자</label>
+      <input type="text" class="form-control" id="author" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">날짜</label>
+      <input type="date" class="form-control" id="date" required>
+    </div>
+    <button type="submit" class="btn btn-success">확인</button>
+    <a href="index.html" class="btn btn-secondary">취소</a>
+  </form>
+
+  <script>
+    function addWord() {
+      const word = document.getElementById("word").value.trim();
+      const meaning = document.getElementById("meaning").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const date = document.getElementById("date").value;
+
+      if(word.length < 2) { alert("단어는 2글자 이상!"); return false; }
+      if(meaning.length < 2) { alert("뜻은 2글자 이상!"); return false; }
+      if(author === "") { alert("작성자 입력!"); return false; }
+      if(date === "") { alert("날짜 입력!"); return false; }
+
+      const words = JSON.parse(localStorage.getItem("words")) || [];
+      words.push({word, meaning, author, date});
+      localStorage.setItem("words", JSON.stringify(words));
+
+      alert("게시물이 추가됩니다");
+      window.location.href = "index.html";
+      return false;
+    }
+  </script>
+</body>
+</html>

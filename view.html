@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상세 보기</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="my.css">
+</head>
+<body class="container py-4">
+
+  <h2>단어 상세보기</h2>
+  <div id="detail"></div>
+
+  <a href="add.html" class="btn btn-success">추가</a>
+  <a id="edit-btn" class="btn btn-warning">수정</a>
+  <button onclick="deleteWord()" class="btn btn-danger">삭제</button>
+  <a href="index.html" class="btn btn-secondary">목록</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const index = params.get("index");
+    const words = JSON.parse(localStorage.getItem("words")) || [];
+    const detail = document.getElementById("detail");
+
+    if(index !== null && words[index]) {
+      const w = words[index];
+      detail.innerHTML = `
+        <p><strong>단어:</strong> ${w.word}</p>
+        <p><strong>뜻:</strong> ${w.meaning}</p>
+        <p><strong>작성자:</strong> ${w.author}</p>
+        <p><strong>날짜:</strong> ${w.date}</p>
+      `;
+      document.getElementById("edit-btn").href = `edit.html?index=${index}`;
+    }
+
+    function deleteWord() {
+      if(confirm("게시물을 삭제할까요?")) {
+        words.splice(index, 1);
+        localStorage.setItem("words", JSON.stringify(words));
+        alert("삭제되었습니다!");
+        window.location.href = "index.html";
+      }
+    }
+  </script>
+</body>
+</html>
