@@ -1,0 +1,103 @@
+{
+  "words": [
+    {
+      "word": "accuse2",
+      "meaning": "비난하다ㄷㄷ",
+      "author": "김철수",
+      "date": "2025-10-02",
+      "category": "동사",
+      "level": 4,
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "word": "probationary",
+      "meaning": "수습의",
+      "author": "이영희",
+      "date": "2025-09-30",
+      "category": "형용사",
+      "level": 2
+    },
+    {
+      "id": "4",
+      "word": "legitimate",
+      "meaning": "합법적인",
+      "author": "박민수",
+      "date": "2025-09-29",
+      "category": "형용사",
+      "level": 3
+    },
+    {
+      "id": "5",
+      "word": "superintendent",
+      "meaning": "감독자",
+      "author": "최수지",
+      "date": "2025-09-28",
+      "category": "명사",
+      "level": 5
+    },
+    {
+      "id": "6",
+      "word": "indicate",
+      "meaning": "나타내다",
+      "author": "윤하늘",
+      "date": "2025-09-27",
+      "category": "동사",
+      "level": 2
+    },
+    {
+      "id": "7",
+      "word": "electric",
+      "meaning": "전기의",
+      "author": "정우성",
+      "date": "2025-09-25",
+      "category": "형용사",
+      "level": 3
+    },
+    {
+      "id": "8",
+      "word": "maintain",
+      "meaning": "유지하다",
+      "author": "한지민",
+      "date": "2025-09-24",
+      "category": "동사",
+      "level": 4
+    },
+    {
+      "id": "9",
+      "word": "confirm",
+      "meaning": "확인하다",
+      "author": "서지훈",
+      "date": "2025-09-23",
+      "category": "동사",
+      "level": 2
+    },
+    {
+      "id": "10",
+      "word": "observe",
+      "meaning": "관찰하다",
+      "author": "강유진",
+      "date": "2025-09-22",
+      "category": "동사",
+      "level": 3
+    },
+    {
+      "id": "11",
+      "word": "가가",
+      "meaning": "가가",
+      "author": "각",
+      "date": "222222-02-22",
+      "category": "동사",
+      "level": 3
+    },
+    {
+      "id": "3d73",
+      "word": "아앙",
+      "meaning": "ㄷㄷ",
+      "author": "ㄱㄱ",
+      "date": "0003-02-02",
+      "category": "동사",
+      "level": 2
+    }
+  ]
+}
